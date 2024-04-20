@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scut.moonlogin.Mapper.DateMapper">
+
+    <update id="createUserNote" >
+        create table ${userName}(
+                                 id serial primary key,
+                                 Date date,
+                                 mood char(20) ,
+                                 note char(50)
+        )
+
+    </update>
+
+    <insert id="insert">
+        insert into ${userName} (Date, note,mood) values(now(),#{note},#{mood})
+    </insert>
+
+    <select id="findAll" resultType="com.scut.moonlogin.Data.Note">
+        select * from ${userName}
+    </select>
+
+    <delete id="ClsGo">
+        truncate table ${userName}
+    </delete>
+</mapper>
